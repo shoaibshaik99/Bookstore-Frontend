@@ -1,0 +1,27 @@
+<div class="page-container">
+	<div class="left-section">
+		<img class="shoppig-cart-image" src="../../../assets\shopping-cart.png" alt="shopping cart">
+		<p class="left-description">ONLINE BOOK SHOPPING</p>
+	</div>
+	<div class="right-login-signup-section">
+		<div class="login-signup-buttons-container">
+			<!-- <h2 class="top-login-signup-buttons" routerLink="/login" (click)="navigateToLogin()">LOGIN</h2> -->
+			<h2 class="top-login-signup-buttons" (click)="navigateToLogin()">LOGIN</h2>
+      <h2 class="top-login-signup-buttons" (click)="navigateToSignup()">SIGNUP</h2>
+		</div>
+		<div class="register-form-container">
+			<form class="register-form" action="" [formGroup]="RegisterForm" (ngSubmit)="OnRegister()" >
+                <label for="fullname">Full Name</label>
+                <input class="inputs" type="text" formControlName="fullname">
+				<label class="labels" for="email">Email Id</label>
+				<input class="inputs" type="email" name="" id="" formControlName="email">
+				<label class="labels" for="password">Password</label>
+				<input class="inputs"type="password" formControlName="password">
+                <label class="labels" for="">Mobile Number</label>
+                <input class="inputs" type="tel" formControlName="contactNumber">
+                <br>
+				<button class="botton-signup-button">Signup</button>
+			</form>
+		</div>
+	</div>
+</div>

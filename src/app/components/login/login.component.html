@@ -1,0 +1,34 @@
+<div class="page-container">
+	<div class="left-section">
+		<img class="shoppig-cart-image" src="../../../assets\shopping-cart.png" alt="shopping cart">
+		<p class="left-description">ONLINE BOOK SHOPPING</p>
+	</div>
+	<div class="right-login-signup-section">
+		<div class="login-signup-buttons-container">
+			<h2 class="top-login-signup-buttons" (click)="navigateToLogin()">LOGIN</h2>
+			<h2 class="top-login-signup-buttons" (click)="navigateToSignup()">SIGNUP</h2>
+		</div>
+		<div class="login-form-container">
+			<form class="login-form" [formGroup]="LoginForm" (ngSubmit)="OnLogin()" action="">
+				<label class="labels" for="email">Email Id</label>
+				<input class="inputs" type="email" name="" id="" formControlName="email">
+				<br>
+				<label class="labels" for="password">Password</label>
+				<input class="inputs" type="password" formControlName="password">
+				<a href="" class="forgot-password">Forgot Password</a>
+				<br>
+				<button class="botton-login-button">Login</button>
+			</form>
+		</div>
+		<div class="hr-or">
+			<hr>
+			<h4>OR</h4>
+			<hr>
+		</div>
+		<br>
+		<div class="bottom-alt-login-buttons-container">
+			<button class="facebook-alt-login">Facebook</button>
+			<button class="google-alt-login">Google</button>
+		</div>
+	</div>
+</div>
