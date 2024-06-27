@@ -20,6 +20,10 @@ export class HttpService {
     return this.http.get(url,token && httpOptions);
   }
 
+  getMethodReset(url:string, token:boolean=false, httpOptions:any={}){
+    return this.http.get(url,token && httpOptions);
+  }
+
   putMethod(url: string, reqData: any, token:boolean=true, httpOptions: any={}){
     console.log( reqData)
     return this.http.put(url, reqData, token && httpOptions)
