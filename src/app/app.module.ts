@@ -16,6 +16,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FetchAllBooksComponent } from './components/fetch-all-books/fetch-all-books.component';
+import { FetchEachBookComponent } from './components/fetch-each-book/fetch-each-book.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { FetchAllBooksComponent } from './components/fetch-all-books/fetch-all-b
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    FetchAllBooksComponent
+    FetchAllBooksComponent,
+    FetchEachBookComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

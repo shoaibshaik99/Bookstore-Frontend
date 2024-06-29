@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="title">
+      <h1 class="breadcrumb">Home/</h1>
+      <span class="book-id">Book({{ id }})</span>
+    </div>
+    <div class="main-content">
+        <div class="book-images">
+            <img class="small" [src]="bookObject?.image" alt="Book image">
+        </div>
+        <mat-card class="card" [routerLink]="['/dashboard/getBook', id]">
+            <mat-card-header class="headers">
+                <mat-card-title>
+                    <img class="image" [src]="bookObject?.image" alt="Book image">
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="card-content">
+                <button class="add-to-bag-button" mat-flat-button>ADD TO BAG</button>
+                <button class="wishlist-button" mat-flat-button>
+                    <mat-icon>favorite</mat-icon>WISHLIST
+                </button>
+            </mat-card-content>
+        </mat-card>
+        <div class="book-details">
+            <h1>{{ bookObject?.title }}</h1>
+            <h4 class="author">by {{ bookObject?.author }}</h4>
+            <div class="ratings">
+                <div class="ratingbox">
+                <span>{{ bookObject?.rating }}</span>
+                <mat-icon class="star-icon">star</mat-icon>
+                </div>
+                <div class="rating-count">({{ bookObject?.ratingCount }})</div>
+            </div>
+            <div class="price">
+                <h1 class="discount-price">Rs.{{ bookObject?.price }}</h1>
+                <h2 class="mrp"><s>Rs.{{ bookObject?.originalPrice }}</s></h2>
+            </div>
+            <hr>
+            <ul class="book-description">
+                <li>
+                Book Details<br>
+                {{ bookObject?.description }} <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit...</span>
+                </li>
+            </ul>
+            <hr>
+            <div class="customer-feedback">
+                <h3>Customer Feedback</h3>
+                <div class="feedback-section">
+                <h4>Overall rating</h4>
+                <div class="star-icons">
+                    <img src="" alt="">
+                    <!-- &#9734; -->
+                    <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="24px" fill="#a0a8b2"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-350Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="24px" fill="#a0a8b2"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-350Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="24px" fill="#a0a8b2"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-350Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="24px" fill="#a0a8b2"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-350Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="24px" fill="#a0a8b2"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-350Z"/></svg>                    
+                </div>
+                <textarea class="feedback-textarea" rows="4"></textarea>
+                <button mat-button class="submit-feedback-button">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
