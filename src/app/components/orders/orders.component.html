@@ -1,0 +1,27 @@
+<div class="orders-page">
+  <div class="orders">
+    <div>
+      <div class="container">
+        <div class="title">
+            <h1 style="margin-top: 9px; color: lightgrey; font-size: 15px;">Home/</h1>
+            <span style="font-size: 18px;margin-top: -5px;">My Order</span>
+        </div>
+        <div *ngFor="let order of orders" class="card">
+            <div  class="cart">
+                <div><img style="width: 65px; height: 85px;" src="{{order.bookImage}}" alt=""></div>
+                <div class="details">
+                    <h3>{{order.bookTitle}}</h3>
+                    <h5 style="color: lightgray; margin-top: -15px;">by {{order.authorName}}</h5>
+                    <div style="display: flex; gap: 5px; margin-top: -10px;">
+                        <div style="font-weight: 500;">Rs.{{order.totalFinalBookPrice}}</div>
+                        <div style="color: #878787;"><s>Rs.{{order.totalOriginalBookPrice}}</s></div>
+                    </div>
+                </div>
+                <ul style="display: flex; width: 100%; align-items: flex-start; justify-content: end;">
+                    <li style="font-size: medium;">Order Placed on {{order.orderDateTime  | date: 'MMM dd'}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

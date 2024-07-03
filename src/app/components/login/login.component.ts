@@ -29,35 +29,9 @@ export class LoginComponent implements OnInit{
     this.user.Login(data).subscribe((response:any)=>{
       console.log(response);
       localStorage.setItem("token",response.data);
+      this.router.navigate(['/home']);
     })
   }
-
-
-  // credentials = { email: '', password: '' };
-
-  // // constructor(private authService: AuthService, private router: Router) {}
-  // constructor(private router: Router) {}
-  // ngOnInit(): void {
-  //   throw new Error('Method not implemented.');
-  // }
-
-  // // login(): void {
-  // //   this.authService.login(this.credentials).subscribe(
-  // //     response => {
-  // //       if (response.isSuccess) {
-  // //         localStorage.setItem('token', response.data.token);
-  // //         this.router.navigate(['/orders']);
-  // //       } else {
-  // //         alert(response.message);
-  // //       }
-  // //     },
-  // //     error => {
-  // //       console.error(error);
-  // //       alert('Login failed. Please try again.');
-  // //     }
-  // //   );
-  // // }
-  
   
   navigateToSignup(): void {
     this.router.navigate(['/register']);

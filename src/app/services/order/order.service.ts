@@ -1,45 +1,43 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpService } from '../http/http.service';
-import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AddressService {
-
+export class OrderService {
   token: any;
 
   constructor(private http:HttpService) {
     this.token=localStorage.getItem('token');
   }
-
-  AddAddress(data:any){
+  
+  PlaceOrder(data:any){
     let head={
       headers: new HttpHeaders({
         'content-type':'application/json',
         'Authorization':'Bearer '+this.token
       })
     }
-    return this.http.postMethodReset('https://localhost:44305/api/Addresses/add', data, true, head);
+    return this.http.postMethodReset('https://localhost:44305/api/Orders/AddOrder', data, true, head);
   }
 
-  GetAddressesOfUser(){
+  GetOrdersByUser(){
     let head={
       headers: new HttpHeaders({
         'Content-type':'application/json',
         'Authorization':'Bearer '+this.token
       })
     }
-    return this.http.getMethod(`https://localhost:44305/api/Addresses/GetAddressesByUserId`,true,head)
+    return this.http.getMethod(`https://localhost:44305/api/Orders/GetOrdersByUser`,true,head)
   }
 
-  UpdateAddress(data:any){
+  getAllOrders(){
     let head={
       headers: new HttpHeaders({
-        'Content-type':'application/json',
-        'Authorization':'Bearer '+this.token
+        'Content-type':'application/json'
       })
     }
-    return this.http.putMethod(`https://localhost:44305/api/Addresses/update`,data,true,head)
+    return this.http.getMethodReset(`https://localhost:44305/api/Orders/getAllOrders`,false,head)
   }
 }

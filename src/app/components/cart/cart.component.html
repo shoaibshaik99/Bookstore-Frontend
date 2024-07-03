@@ -1,13 +1,118 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div></div>
-    <div *ngFor="let Book of BooksInCart"></div>
-    <div></div>
-</body>
-</html>
+<div class="container">
+    <div class="title">
+        <h1 class="home" routerLink="/dashboard/books">Home/</h1>
+        <span style="font-size: 18px; margin-top: -5px;">My cart</span>
+    </div>
+
+    <div class="card" *ngIf="hasCartItems()">
+        <div class="head">
+            <h2>My cart ({{count}})</h2>
+            <div class="locBox">
+                <mat-icon style="color:brown;">pin_drop</mat-icon> 
+                <span>Use current location</span>
+            </div>
+        </div>
+
+        <div *ngFor="let cart of cartItems" class="carts">
+            <div>
+                <img [src]="cart.bookImage" alt="" style="width: 65px; height: 85px; margin-left:30px;">
+            </div>
+            <div class="details">
+                <h3>{{cart.bookTitle}}</h3>
+                <h5 style="color: lightgray; margin-top: -15px;">by {{cart.bookAuthor}}</h5>
+                <div style="display: flex; gap: 5px; margin-top: -10px;">
+                    <div style="font-weight: 500;">Rs. {{cart.bookPrice}}</div>
+                    <div style="color: #878787;"><s>Rs. {{cart.originalBookPrice}}</s></div>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <button mat-icon-button class="circle" (click)="decreaseQuantity(cart)">-</button>
+                    <div class="box">{{cart.quantity}}</div>
+                    <button mat-icon-button class="circle" (click)="increaseQuantity(cart)">+</button>
+                    <button mat-button (click)="removeFromCart(cart.cartId)" style="font-size: 15px; margin-left: 12px;">Remove</button>
+                </div>
+            </div>
+            <div class="place-order-btn">
+                <button mat-button class="orderbtn" *ngIf="!isAddressVisible" (click)="isAddressVisible=true; showAddress(cart);">PLACE ORDER</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 *ngIf="!isAddressVisible" style="font-weight: 400; margin-left: 40px; margin-top: 12px;">Address Details</h2>
+        <div *ngIf="isAddressVisible" >
+            <div class="head">
+                <h2 style="font-weight: 400;">Customer Details</h2>
+                <button mat-flat-button style="border: 1px solid #A03037; border-radius: 2px; color: #A03037; font-size: 15px;">Add New Address</button>
+            </div>
+            <div class="form">
+                <form [formGroup]="addressForm" (ngSubmit)="addAddress()">
+                    <div class="first">
+                      <div class="formItem">
+                        <label>Full Name</label>
+                        <mat-form-field appearance="outline">
+                          <input matInput placeholder="Full Name" formControlName="fullName">
+                        </mat-form-field>
+                      </div>
+                      <div class="formItem1">
+                        <label>Mobile Number</label>
+                        <mat-form-field appearance="outline">
+                          <input matInput placeholder="Mobile Number" formControlName="mobileNumber">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; width:87%">
+                        <label>Address</label>
+                        <mat-form-field appearance="outline">
+                          <textarea matInput placeholder="Enter your Address"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="first">
+                      <div class="formItem">
+                        <label>city/town</label>
+                        <mat-form-field appearance="outline">
+                          <input matInput placeholder="city" formControlName="city">
+                        </mat-form-field>
+                      </div>
+                      <div class="formItem1">
+                        <label>State</label>
+                        <mat-form-field appearance="outline">
+                          <input matInput placeholder="State" formControlName="state">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="formItem">
+                        <label>Type</label>
+                        <mat-radio-group formControlName="type" [formControl]="floatLabelControl" style="display: flex; gap: 50px;">
+                            <mat-radio-button value="Home">Home</mat-radio-button>
+                            <mat-radio-button value="Work">Work</mat-radio-button>
+                            <mat-radio-button value="Others">Others</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </form>
+            </div>
+            <div class="continue">
+                <button mat-flat-button *ngIf="!isOrderVisible" (click)="isOrderVisible=true;">CONTINUE</button>                
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 style="font-weight: 400; margin-left: 40px; margin-top: 12px;">Order Summary</h2>
+        <div *ngIf="isOrderVisible" class="carts">
+            <div >
+                <img src="{{cartOrder.bookImage}}" alt="" style="width: 65px; height: 85px; margin-left: 30px;">
+            </div>
+            <div class="details" *ngIf="haveOrderCart()">
+                <h3>{{this.cartOrder.bookTitle}}</h3>
+                <h5 style="color: lightgray; margin-top: -15px;">by {{cartOrder.bookAuthor}}</h5>
+                <div style="display: flex; gap: 5px; margin-top: -10px;">
+                    <div style="font-weight: 500;">Rs. {{cartOrder.bookPrice}}</div>
+                    <div style="color: #a22727;"><s>Rs. {{cartOrder.originalBookPrice}}</s></div>
+                </div>
+            </div>
+            <div class="place-order-btn">
+                <button mat-button class="orderbtn" (click)="placeOrder()">CHECKOUT</button>
+            </div>
+        </div>
+    </div>
+</div>

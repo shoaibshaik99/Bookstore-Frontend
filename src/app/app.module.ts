@@ -7,8 +7,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
-//import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatRadioModule} from '@angular/material/radio';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +20,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FetchAllBooksComponent } from './components/fetch-all-books/fetch-all-books.component';
 import { FetchEachBookComponent } from './components/fetch-each-book/fetch-each-book.component';
 import { CartComponent } from './components/cart/cart.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +33,11 @@ import { CartComponent } from './components/cart/cart.component';
     DashboardComponent,
     FetchAllBooksComponent,
     FetchEachBookComponent,
-    CartComponent
+    CartComponent,
+    OrdersComponent,
+    OrderConfirmationComponent,
+    WishlistComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -40,8 +50,10 @@ import { CartComponent } from './components/cart/cart.component';
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
-    //MatFormFieldModule,
-    BrowserAnimationsModule
+    MatFormFieldModule,
+    BrowserAnimationsModule,
+    MatRadioModule,
+    MatInputModule
   ],
   providers: [
     provideClientHydration()

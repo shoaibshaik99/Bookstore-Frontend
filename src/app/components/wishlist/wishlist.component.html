@@ -1,0 +1,29 @@
+<div class="orders-page">
+    <div class="orders">
+      <div>
+        <div class="container">
+          <div class="title">
+              <h1 style="margin-top: 9px; color: lightgrey; font-size: 15px;">Home/</h1>
+              <span style="font-size: 18px;margin-top: -5px;">My Wishlist</span>
+          </div>
+          <div *ngFor="let book of wishlist" class="card">
+              <div  class="cart">
+                  <div><img style="width: 65px; height: 85px;" src="{{book.bookImage}}" alt=""></div>
+                  <div class="details">
+                      <h3>{{book.bookTitle}}</h3>
+                      <h5 style="color: lightgray; margin-top: -15px;">by {{book.bookAuthor}}</h5>
+                      <div style="display: flex; gap: 5px; margin-top: -10px;">
+                          <div style="font-weight: 500;">Rs.{{book.bookPrice}}</div>
+                          <div style="color: #878787;"><s>Rs.{{book.originalBookPrice}}</s></div>
+                      </div>
+                  </div>
+                  <div style="display: flex; width: 100%; align-items: flex-start; justify-content: end;">
+                    <button mat-icon-button>
+                      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#878787"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                    </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>

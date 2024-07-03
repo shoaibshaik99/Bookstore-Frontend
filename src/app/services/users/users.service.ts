@@ -6,8 +6,11 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UsersService {
+  token: any;
 
-  constructor(private httpService:HttpService) { }
+  constructor(private httpService:HttpService) {
+    this.token=localStorage.getItem('token');
+   }
 
   Login(data:any){
     let header ={head:new HttpHeaders({
@@ -21,5 +24,25 @@ export class UsersService {
       'Content-type':'application/json'
     })};
     return this.httpService.postMethod('https://localhost:44305/api/Users/register',data,false,header)
+  }
+
+  FetchUserDetails(){
+    let head={
+      headers: new HttpHeaders({
+        'Content-type':'application/json',
+        'Authorization':'Bearer '+this.token
+      })
+    }
+    return this.httpService.getMethod(`https://localhost:44305/api/Users/GetUserById`,true,head)
+  }
+
+  UpdateUserDetails(data:any){
+    let head={
+      headers: new HttpHeaders({
+        'Content-type':'application/json',
+        'Authorization':'Bearer '+this.token
+      })
+    }
+    return this.httpService.putMethod(`https://localhost:44305/api/Users/UpdateUser`,data,true,head)
   }
 }
